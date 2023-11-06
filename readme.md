@@ -54,17 +54,11 @@ const myBorder = createBorder(options); // border(options);
 
 The `createBorder` function returns a `BorderObject` containing the following methods:
 
-| Method      | Argument Type           | Description                                                                    |
-|-------------|-------------------------|--------------------------------------------------------------------------------|
-| `set`       | `Partial<BorderValues>` | Sets new values for the border properties.                                    |
-| `adjust`    | `Partial<BorderValues>` | Adjusts the existing border properties.                                       |
-| `toString`  | `None`                  | Returns a string that represents the CSS border property for use in stylesheets.|
-
 ### `BorderObject` Methods
 
-- `set(newValues)`: Allows you to replace the current border values with new ones.
+- `set(newValues: Partial<BorderValues>)`: Allows you to replace the current border values with new ones.
 
-- `adjust(adjustments)`: Allows you to adjust the current border values by specifying only what you want to change.
+- `adjust(adjustments: Partial<BorderValues>)`: Allows you to adjust the current border values by specifying only what you want to change.
 
 - `toString()`: Converts the border object into a CSS-compatible string.
 
@@ -150,17 +144,11 @@ Each `GradientSection` in the `sections` array can have the following properties
 
 The `createGradient` function returns a `GradientObject` with the following methods:
 
-| Method      | Argument Type            | Description                                                                    |
-|-------------|--------------------------|--------------------------------------------------------------------------------|
-| `set`       | `Partial<GradientValues>`| Sets new values for the gradient properties.                                   |
-| `adjust`    | `Partial<GradientValues>`| Adjusts the existing gradient properties.                                      |
-| `toString`  | None                     | Returns a string that represents the CSS gradient property for stylesheets.     |
-
 ### `GradientObject` Methods
 
-- `set(newValues)`: Allows you to replace the current gradient values with new ones.
+- `set(newValues: Partial<GradientValues>)`: Allows you to replace the current gradient values with new ones.
 
-- `adjust(adjustments)`: Allows you to adjust the current gradient values by specifying what you want to change.
+- `adjust(adjustments: Partial<GradientValues>)`: Allows you to adjust the current gradient values by specifying what you want to change.
 
 - `toString()`: Converts the gradient object into a CSS-compatible string.
 
@@ -243,13 +231,15 @@ The `createHSLA` function returns an `HSLAObject` containing several methods to 
 
 ### `HSLAObject` Methods
 
-| Method    | Argument Type           | Description                                                                                   |
-|-----------|-------------------------|-----------------------------------------------------------------------------------------------|
-| `set`     | `Partial<HSLAValues>`   | Updates the HSLA color object with new values.                                                |
-| `adjust`  | `Partial<HSLAValues>`   | Adjusts the current HSLA values; you can increment or decrement each color property.          |
-| `shift`   | `number`                | Shifts the hue value by a given degree, positive or negative, looping around the color wheel. |
-| `toRgb`   | `None`                  | Converts the HSLA color to its RGB representation.                                            |
-| `toString`| `None`                  | Converts the HSLA object to a CSS-compatible string.                                          |
+- `set(newValues: Partial<HSLAValues>)`: Allows you to replace the current HSLA values with new ones.
+
+- `adjust(adjustments: Partial<HSLAValues>)`: Allows you to adjust the current HSLA values by specifying what you want to change.
+
+- `shift(amount: number)`: Shifts the hue value by a given degree, positive or negative, looping around the color wheel.
+
+- `toRgb()`: Converts the HSLA color to its RGB representation.
+
+- `toString()`: Converts the HSLA object into a CSS-compatible string.
 
 ### Examples
 
@@ -367,17 +357,11 @@ const myShadow = createShadow(options); // shadow(options);
 
 The `createShadow` function returns a `ShadowObject` that contains methods for shadow manipulation:
 
-| Method      | Argument Type          | Description                                                                     |
-|-------------|------------------------|---------------------------------------------------------------------------------|
-| `set`       | `Partial<ShadowValues>`| Sets new values for the shadow properties.                                      |
-| `adjust`    | `Partial<ShadowValues>`| Adjusts the existing shadow properties.                                         |
-| `toString`  | None                   | Returns a string representing the CSS shadow property for use in stylesheets.   |
-
 ### `ShadowObject` Methods
 
-- `set(newValues)`: Overrides the current shadow properties with new ones.
+- `set(newValues: Partial<ShadowValues>)`: Overrides the current shadow properties with new ones.
 
-- `adjust(adjustments)`: Modifies the existing shadow properties selectively based on what you want to change.
+- `adjust(adjustments: Partial<ShadowValues>)`: Modifies the existing shadow properties selectively based on what you want to change.
 
 - `toString()`: Generates a CSS-compatible string that represents the shadow, ready to be applied in styles.
 
