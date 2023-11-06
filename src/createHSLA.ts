@@ -1,16 +1,59 @@
+/**
+ * Interface representing an HSLA (Hue, Saturation, Lightness, Alpha) color object.
+ */
 export interface HSLAObject {
+  /** The hue component of the color (0-360). */
   readonly h: number
+
+  /** The saturation component of the color (0-100%). */
   readonly s: number
+
+  /** The lightness component of the color (0-100%). */
   readonly l: number
+
+  /** The alpha (opacity) component of the color (0-1). */
   readonly a: number
+
+  /** The HSLA values as an object. */
   readonly value: HSLAValues
+
+  /**
+   * Updates the HSLA color object with new values.
+   * @param newValues - An object containing new values to set on the color.
+   * @returns A new `HSLAObject` with updated properties.
+   */
   set: (newValues: Partial<HSLAValues>) => HSLAObject
+
+  /**
+   * Adjusts the existing values of the HSLA color object.
+   * @param adjustments - An object containing the adjustments to the color values.
+   * @returns A new `HSLAObject` with adjusted properties.
+   */
   adjust: (adjustments: Partial<HSLAValues>) => HSLAObject
+
+  /**
+   * Shifts the lightness of the HSLA color, making it lighter or darker based on the luminance.
+   * @param adjustment - The amount by which to adjust the lightness.
+   * @returns A new `HSLAObject` with adjusted lightness.
+   */
   shift: (adjustment: number) => HSLAObject
+
+  /**
+   * Converts the HSLA color to an RGB color.
+   * @returns An array representing the RGB components of the color.
+   */
   toRgb: () => [number, number, number]
+
+  /**
+   * Returns a string representation of the HSLA color.
+   * @returns A CSS-compatible string representing the HSLA color.
+   */
   toString: () => string
 }
 
+/**
+ * Type representing the values for an HSLA color.
+ */
 export type HSLAValues = {
   h: number
   s: number
@@ -18,6 +61,15 @@ export type HSLAValues = {
   a: number
 }
 
+/**
+ * Creates a new `HSLAObject` with specified values or default ones.
+ * @param data - An object containing the initial HSLA values for the color.
+ * @param data.h - The hue of the color, defaulting to 0.
+ * @param data.s - The saturation of the color, defaulting to 0.
+ * @param data.l - The lightness of the color, defaulting to 0.
+ * @param data.a - The alpha (opacity) of the color, defaulting to 1.
+ * @returns A new `HSLAObject` with the specified or default values.
+ */
 export function createHSLA({
   h = 0,
   s = 0,
@@ -100,6 +152,11 @@ export function createHSLA({
   }
 }
 
+/**
+ * Parses an HSLA color string and creates an `HSLAObject`.
+ * @param hslaString - The HSLA color string to parse.
+ * @returns A new `HSLAObject` if the string is valid, otherwise `null`.
+ */
 export function fromStringHSLA(hslaString: string): HSLAObject | null {
   const regex = /hsla\((\d+),\s*(\d+)%,\s*(\d+)%,\s*(\d*(?:\.\d+)?)\)/
   const match = hslaString.match(regex)

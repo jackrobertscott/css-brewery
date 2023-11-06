@@ -1,26 +1,41 @@
 import { HSLAObject, createHSLA } from "./createHSLA"
 
+/**
+ * Represents the properties required to create a box-shadow effect in CSS.
+ * It encapsulates the horizontal and vertical offsets, the blur radius,
+ * the spread radius, the color of the shadow, and whether the shadow is inset.
+ */
 export interface ShadowObject {
-  readonly x: number
-  readonly y: number
-  readonly blur: number
-  readonly spread: number
-  readonly color: HSLAObject
-  readonly inset: boolean
-  set: (newValues: Partial<ShadowValues>) => ShadowObject
-  adjust: (adjustments: Partial<ShadowValues>) => ShadowObject
-  toString: () => string
+  readonly x: number // Horizontal offset of the shadow
+  readonly y: number // Vertical offset of the shadow
+  readonly blur: number // Blur radius of the shadow
+  readonly spread: number // Spread radius of the shadow
+  readonly color: HSLAObject // Color object of the shadow
+  readonly inset: boolean // Whether the shadow is an inner shadow
+  set: (newValues: Partial<ShadowValues>) => ShadowObject // Method to update shadow properties
+  adjust: (adjustments: Partial<ShadowValues>) => ShadowObject // Method to adjust shadow properties
+  toString: () => string // Method to convert the shadow object to a CSS string
 }
 
+/**
+ * Describes the expected shape of the values used to create or modify a shadow.
+ */
 export type ShadowValues = {
-  x: number
-  y: number
-  blur: number
-  spread: number
-  color: HSLAObject
-  inset: boolean
+  x: number // Horizontal offset
+  y: number // Vertical offset
+  blur: number // Blur radius
+  spread: number // Spread radius
+  color: HSLAObject // Color object
+  inset: boolean // Whether the shadow is inset or not
 }
 
+/**
+ * Creates a `ShadowObject` which can be used to represent a CSS box-shadow.
+ * Default values are provided for each property, and any subset of properties can be specified to override these defaults.
+ *
+ * @param {Partial<ShadowValues>} [shadowValues={}] - An optional object that can override default shadow values.
+ * @returns {ShadowObject} - An object representing the shadow, with methods for setting, adjusting, and converting to a string.
+ */
 export function createShadow({
   x = 0,
   y = 0,
