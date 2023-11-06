@@ -52,7 +52,7 @@ const myBorder = createBorder(options); // border(options);
 
 ### Return Value
 
-The `createBorder` function returns a `BorderObject` containing the following methods:
+The `createBorder` function returns a `BorderObject` that contains the following methods:
 
 ### `BorderObject` Methods
 
@@ -227,7 +227,7 @@ const myColor = createHsla(options); // hsla(options);
 
 ### Return Value
 
-The `createHsla` function returns an `HslaObject` containing several methods to manipulate the color.
+The `createHsla` function returns an `HslaObject` with the following methods:
 
 ### `HslaObject` Methods
 
@@ -355,7 +355,7 @@ const myShadow = createShadow(options); // shadow(options);
 
 ### Return Value
 
-The `createShadow` function returns a `ShadowObject` that contains methods for shadow manipulation:
+The `createShadow` function returns a `ShadowObject` that contains the following methods:
 
 ### `ShadowObject` Methods
 
