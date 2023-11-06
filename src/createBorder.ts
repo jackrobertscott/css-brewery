@@ -1,4 +1,4 @@
-import { HslaObject, createHsla } from "./createHsla_"
+import { HslaObject, createHsla } from "./createHsla"
 
 /**
  * Represents the structure of a border object.

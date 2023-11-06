@@ -1,12 +1,12 @@
 import { createBorder } from "./createBorder"
 import { createGradient } from "./createGradient"
-import { createHsla } from "./createHsla_"
+import { createHsla } from "./createHsla"
 import { createPixelString } from "./createPixelString"
 import { createShadow } from "./createShadow"
 
 export * from "./createBorder"
 export * from "./createGradient"
-export * from "./createHsla_"
+export * from "./createHsla"
 export * from "./createPixelString"
 export * from "./createShadow"
 

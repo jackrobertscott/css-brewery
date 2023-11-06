@@ -1,4 +1,4 @@
-import { HslaObject, createHsla } from "./createHsla_"
+import { HslaObject, createHsla } from "./createHsla"
 
 /**
  * Represents the properties required to create a box-shadow effect in CSS.

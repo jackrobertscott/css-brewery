@@ -1,4 +1,4 @@
-import { HslaObject } from "./createHsla_"
+import { HslaObject } from "./createHsla"
 
 /**
  * Interface representing a gradient object.
