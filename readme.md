@@ -35,7 +35,7 @@ Generates a `BorderObject` that represents CSS border properties and provides me
 ### Syntax
 
 ```javascript
-const myBorder = createBorder(options);
+const myBorder = createBorder(options); // border(options);
 ```
 
 ### Parameters
@@ -109,14 +109,14 @@ console.log(newBorder.toString());
 
 The `createBorder` function streamlines the process of creating complex border styles and enables efficient updates to border properties, allowing for dynamic style changes in JavaScript-driven web applications.
 
-## `createGradient` (alias: `border`)
+## `createGradient` (alias: `gradient`)
 
 Generates a `GradientObject` that represents CSS gradient properties and provides methods to manipulate these properties easily for creating complex gradient designs.
 
 ### Syntax
 
 ```javascript
-const myGradient = createGradient(options);
+const myGradient = createGradient(options); // gradient(options);
 ```
 
 ### Parameters
@@ -223,7 +223,7 @@ Generates an `HSLAObject` which represents an HSLA color value and provides meth
 ### Syntax
 
 ```javascript
-const myColor = createHSLA(options);
+const myColor = createHSLA(options); // hsla(options);
 ```
 
 ### Parameters
@@ -303,7 +303,7 @@ Converts one or more numeric values into a pixel-based string representation, su
 ### Syntax
 
 ```javascript
-const pixels = createPixelString(...pixelValues);
+const pixels = createPixelString(...pixelValues); // px(...pixelValues);
 ```
 
 ### Parameters
@@ -347,7 +347,7 @@ Creates a `ShadowObject` representing CSS box-shadow and text-shadow properties 
 ### Syntax
 
 ```javascript
-const myShadow = createShadow(options);
+const myShadow = createShadow(options); // shadow(options);
 ```
 
 ### Parameters
