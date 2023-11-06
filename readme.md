@@ -26,17 +26,19 @@ import { border, gradient, hsla, px, shadow } from 'css-brewery';
 
 ## API
 
-### `createBorder` (alias: `border`)
+The following is the API specifications of the `css-brewery` package.
+
+## `createBorder` (alias: `border`)
 
 Generates a `BorderObject` that represents CSS border properties and provides methods to manipulate these properties conveniently.
 
-#### Syntax
+### Syntax
 
 ```javascript
 const myBorder = createBorder(options);
 ```
 
-#### Parameters
+### Parameters
 
 `options` is an optional object that can contain the following properties:
 
@@ -48,7 +50,7 @@ const myBorder = createBorder(options);
 
 `BorderStyle` is a string literal type that allows one of the following values: "solid", "dotted", "dashed", "double", "groove", "ridge", "inset", "outset", "none", "hidden".
 
-#### Return Value
+### Return Value
 
 The `createBorder` function returns a `BorderObject` containing the following methods:
 
@@ -58,7 +60,7 @@ The `createBorder` function returns a `BorderObject` containing the following me
 | `adjust`    | `Partial<BorderValues>` | Adjusts the existing border properties.                                       |
 | `toString`  | `None`                  | Returns a string that represents the CSS border property for use in stylesheets.|
 
-#### `BorderObject` Methods
+### `BorderObject` Methods
 
 - `set(newValues)`: Allows you to replace the current border values with new ones.
 
@@ -66,7 +68,7 @@ The `createBorder` function returns a `BorderObject` containing the following me
 
 - `toString()`: Converts the border object into a CSS-compatible string.
 
-#### Examples
+### Examples
 
 **Creating a solid blue border:**
 
