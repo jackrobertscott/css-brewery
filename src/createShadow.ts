@@ -6,35 +6,71 @@ import { HSLAObject, createHSLA } from "./createHSLA"
  * the spread radius, the color of the shadow, and whether the shadow is inset.
  */
 export interface ShadowObject {
-  readonly x: number // Horizontal offset of the shadow
-  readonly y: number // Vertical offset of the shadow
-  readonly blur: number // Blur radius of the shadow
-  readonly spread: number // Spread radius of the shadow
-  readonly color: HSLAObject // Color object of the shadow
-  readonly inset: boolean // Whether the shadow is an inner shadow
-  set: (newValues: Partial<ShadowValues>) => ShadowObject // Method to update shadow properties
-  adjust: (adjustments: Partial<ShadowValues>) => ShadowObject // Method to adjust shadow properties
-  toString: () => string // Method to convert the shadow object to a CSS string
+  /** Horizontal offset of the shadow */
+  readonly x: number
+
+  /** Vertical offset of the shadow */
+  readonly y: number
+
+  /** Blur radius of the shadow */
+  readonly blur: number
+
+  /** Spread radius of the shadow */
+  readonly spread: number
+
+  /** Color object of the shadow */
+  readonly color: HSLAObject
+
+  /** Whether the shadow is an inner shadow */
+  readonly inset: boolean
+
+  /**
+   * Method to update shadow properties.
+   * @param newValues - Partial set of values to update the shadow
+   * @returns Updated `ShadowObject`
+   */
+  set: (newValues: Partial<ShadowValues>) => ShadowObject
+
+  /**
+   * Method to adjust shadow properties.
+   * @param adjustments - Partial set of values to adjust the shadow
+   * @returns Adjusted `ShadowObject`
+   */
+  adjust: (adjustments: Partial<ShadowValues>) => ShadowObject
+
+  /** Converts the shadow object to a CSS string */
+  toString: () => string
 }
 
 /**
  * Describes the expected shape of the values used to create or modify a shadow.
  */
 export type ShadowValues = {
-  x: number // Horizontal offset
-  y: number // Vertical offset
-  blur: number // Blur radius
-  spread: number // Spread radius
-  color: HSLAObject // Color object
-  inset: boolean // Whether the shadow is inset or not
+  /** Horizontal offset */
+  x: number
+
+  /** Vertical offset */
+  y: number
+
+  /** Blur radius */
+  blur: number
+
+  /** Spread radius */
+  spread: number
+
+  /** Color object */
+  color: HSLAObject
+
+  /** Whether the shadow is inset or not */
+  inset: boolean
 }
 
 /**
  * Creates a `ShadowObject` which can be used to represent a CSS box-shadow.
  * Default values are provided for each property, and any subset of properties can be specified to override these defaults.
  *
- * @param {Partial<ShadowValues>} [shadowValues={}] - An optional object that can override default shadow values.
- * @returns {ShadowObject} - An object representing the shadow, with methods for setting, adjusting, and converting to a string.
+ * @param shadowValues - An optional object that can override default shadow values.
+ * @returns An object representing the shadow, with methods for setting, adjusting, and converting to a string.
  */
 export function createShadow({
   x = 0,
