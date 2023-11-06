@@ -1,4 +1,4 @@
-import { HSLAObject, createHSLA } from "./createHSLA"
+import { HslaObject, createHsla } from "./createHsla_"
 
 /**
  * Represents the structure of a border object.
@@ -10,8 +10,8 @@ export interface BorderObject {
   /** The style of the border, as defined by the `BorderStyle` type. */
   readonly style: BorderStyle
 
-  /** The color of the border, represented by an `HSLAObject`. */
-  readonly color: HSLAObject
+  /** The color of the border, represented by an `HslaObject`. */
+  readonly color: HslaObject
 
   /**
    * Sets new values for the border properties.
@@ -55,7 +55,7 @@ export type BorderStyle =
 export type BorderValues = {
   width: number
   style: BorderStyle
-  color: HSLAObject
+  color: HslaObject
 }
 
 /**
@@ -69,7 +69,7 @@ export type BorderValues = {
 export function createBorder({
   width = 1,
   style = "solid",
-  color = createHSLA({ h: 0, s: 0, l: 0, a: 1 }),
+  color = createHsla({ h: 0, s: 0, l: 0, a: 1 }),
 }: Partial<BorderValues> = {}): BorderObject {
   return {
     get width() {

@@ -1,4 +1,4 @@
-import { HSLAObject, createHSLA } from "./createHSLA"
+import { HslaObject, createHsla } from "./createHsla_"
 
 /**
  * Represents the properties required to create a box-shadow effect in CSS.
@@ -19,7 +19,7 @@ export interface ShadowObject {
   readonly spread: number
 
   /** Color object of the shadow */
-  readonly color: HSLAObject
+  readonly color: HslaObject
 
   /** Whether the shadow is an inner shadow */
   readonly inset: boolean
@@ -59,7 +59,7 @@ export type ShadowValues = {
   spread: number
 
   /** Color object */
-  color: HSLAObject
+  color: HslaObject
 
   /** Whether the shadow is inset or not */
   inset: boolean
@@ -77,7 +77,7 @@ export function createShadow({
   y = 0,
   blur = 0,
   spread = 0,
-  color = createHSLA(),
+  color = createHsla(),
   inset = false,
 }: Partial<ShadowValues> = {}): ShadowObject {
   return {

@@ -46,7 +46,7 @@ const myBorder = createBorder(options); // border(options);
 |----------|---------------|---------------|-----------------------------------------------------------------|
 | `width`  | `number`      | `1`           | The width of the border in pixels.                              |
 | `style`  | `BorderStyle` | `"solid"`     | The style of the border, using predefined CSS border styles.    |
-| `color`  | `HSLAObject`  | `hsla(0, 0%, 0%, 1)` | The color of the border in HSLA format.                     |
+| `color`  | `HslaObject`  | `hsla(0, 0%, 0%, 1)` | The color of the border in HSLA format.                     |
 
 `BorderStyle` is a string literal type that allows one of the following values: "solid", "dotted", "dashed", "double", "groove", "ridge", "inset", "outset", "none", "hidden".
 
@@ -67,12 +67,12 @@ The `createBorder` function returns a `BorderObject` containing the following me
 **Creating a solid blue border:**
 
 ```javascript
-import { createBorder, createHSLA } from 'css-brewery';
+import { createBorder, createHsla } from 'css-brewery';
 
 const blueBorder = createBorder({
   width: 5,
   style: 'solid',
-  color: createHSLA({ h: 240, s: 100, l: 50, a: 1 })
+  color: createHsla({ h: 240, s: 100, l: 50, a: 1 })
 });
 
 console.log(blueBorder.toString());
@@ -84,7 +84,7 @@ console.log(blueBorder.toString());
 ```javascript
 const myBorder = createBorder({ width: 2, style: 'dashed' });
 const adjustedBorder = myBorder.adjust({
-  color: createHSLA({ h: 120, s: 75, l: 50, a: 0.8 })
+  color: createHsla({ h: 120, s: 75, l: 50, a: 0.8 })
 });
 
 console.log(adjustedBorder.toString());
@@ -136,7 +136,7 @@ Each `GradientSection` in the `sections` array can have the following properties
 
 | Property | Type          | Description                                    |
 |----------|---------------|------------------------------------------------|
-| `color`  | `HSLAObject`  | The color of the gradient section in HSLA format. |
+| `color`  | `HslaObject`  | The color of the gradient section in HSLA format. |
 | `start`  | `number`      | Optional. The starting position as a percentage.|
 | `end`    | `number`      | Optional. The ending position as a percentage.  |
 
@@ -157,14 +157,14 @@ The `createGradient` function returns a `GradientObject` with the following meth
 **Creating a simple linear gradient:**
 
 ```javascript
-import { createGradient, createHSLA } from 'css-brewery';
+import { createGradient, createHsla } from 'css-brewery';
 
 const simpleGradient = createGradient({
   type: 'linear',
   angle: 45,
   sections: [
-    { color: createHSLA({ h: 0, s: 100, l: 50, a: 1 }), start: 0 },
-    { color: createHSLA({ h: 60, s: 100, l: 50, a: 1 }), end: 100 }
+    { color: createHsla({ h: 0, s: 100, l: 50, a: 1 }), start: 0 },
+    { color: createHsla({ h: 60, s: 100, l: 50, a: 1 }), end: 100 }
   ]
 });
 
@@ -193,8 +193,8 @@ const repeatingRadialGradient = createGradient({
   type: 'radial',
   repeating: true,
   sections: [
-    { color: createHSLA({ h: 120, s: 100, l: 50, a: 0.8 }), start: 10 },
-    { color: createHSLA({ h: 240, s: 100, l: 50, a: 0.8 }), end: 20 }
+    { color: createHsla({ h: 120, s: 100, l: 50, a: 0.8 }), start: 10 },
+    { color: createHsla({ h: 240, s: 100, l: 50, a: 0.8 }), end: 20 }
   ]
 });
 
@@ -204,14 +204,14 @@ console.log(repeatingRadialGradient.toString());
 
 The `createGradient` function is designed to offer a powerful and flexible API for constructing CSS gradients, making it easier for developers to apply dynamic and creative gradient styles in their web projects.
 
-## `createHSLA` (alias: `hsla`)
+## `createHsla` (alias: `hsla`)
 
-Generates an `HSLAObject` which represents an HSLA color value and provides methods for manipulating these color properties.
+Generates an `HslaObject` which represents an HSLA color value and provides methods for manipulating these color properties.
 
 ### Syntax
 
 ```javascript
-const myColor = createHSLA(options); // hsla(options);
+const myColor = createHsla(options); // hsla(options);
 ```
 
 ### Parameters
@@ -227,13 +227,13 @@ const myColor = createHSLA(options); // hsla(options);
 
 ### Return Value
 
-The `createHSLA` function returns an `HSLAObject` containing several methods to manipulate the color.
+The `createHsla` function returns an `HslaObject` containing several methods to manipulate the color.
 
-### `HSLAObject` Methods
+### `HslaObject` Methods
 
-- `set(newValues: Partial<HSLAValues>)`: Allows you to replace the current HSLA values with new ones.
+- `set(newValues: Partial<HslaValues>)`: Allows you to replace the current HSLA values with new ones.
 
-- `adjust(adjustments: Partial<HSLAValues>)`: Allows you to adjust the current HSLA values by specifying what you want to change.
+- `adjust(adjustments: Partial<HslaValues>)`: Allows you to adjust the current HSLA values by specifying what you want to change.
 
 - `shift(amount: number)`: Shifts the hue value by a given degree, positive or negative, looping around the color wheel.
 
@@ -246,9 +246,9 @@ The `createHSLA` function returns an `HSLAObject` containing several methods to 
 **Creating a semi-transparent green:**
 
 ```javascript
-import { createHSLA } from 'css-brewery';
+import { createHsla } from 'css-brewery';
 
-const greenColor = createHSLA({ h: 120, s: 100, l: 50, a: 0.5 });
+const greenColor = createHsla({ h: 120, s: 100, l: 50, a: 0.5 });
 
 console.log(greenColor.toString());
 // Output: 'hsla(120, 100%, 50%, 0.5)'
@@ -257,7 +257,7 @@ console.log(greenColor.toString());
 **Adjusting color properties:**
 
 ```javascript
-const myColor = createHSLA({ h: 60, s: 90, l: 50, a: 1 });
+const myColor = createHsla({ h: 60, s: 90, l: 50, a: 1 });
 const adjustedColor = myColor.adjust({ s: -40, l: 10 });
 
 console.log(adjustedColor.toString());
@@ -267,7 +267,7 @@ console.log(adjustedColor.toString());
 **Shifting hue:**
 
 ```javascript
-const baseColor = createHSLA({ h: 200, s: 100, l: 50, a: 1 });
+const baseColor = createHsla({ h: 200, s: 100, l: 50, a: 1 });
 const shiftedColor = baseColor.shift(60);
 
 console.log(shiftedColor.toString());
@@ -277,14 +277,14 @@ console.log(shiftedColor.toString());
 **Converting HSLA to RGB:**
 
 ```javascript
-const myHSLAColor = createHSLA({ h: 300, s: 75, l: 50, a: 0.8 });
-const [r, g, b] = myHSLAColor.toRgb();
+const myHslaColor = createHsla({ h: 300, s: 75, l: 50, a: 0.8 });
+const [r, g, b] = myHslaColor.toRgb();
 
 console.log(`rgb(${r}, ${g}, ${b})`);
 // Possible Output: 'rgb(191, 64, 191)'
 ```
 
-The `createHSLA` function and the associated `HSLAObject` provide a powerful interface for dealing with HSLA colors, enabling developers to programmatically adjust colors and apply them in CSS.
+The `createHsla` function and the associated `HslaObject` provide a powerful interface for dealing with HSLA colors, enabling developers to programmatically adjust colors and apply them in CSS.
 
 ## `createPixelString` (alias: `px`)
 
@@ -350,7 +350,7 @@ const myShadow = createShadow(options); // shadow(options);
 | `y`       | `number`    | `0`              | The vertical offset of the shadow, in pixels.                |
 | `blur`    | `number`    | `0`              | The blur radius of the shadow, in pixels.                    |
 | `spread`  | `number`    | `0`              | The spread radius of the shadow, in pixels.                  |
-| `color`   | `HSLAObject`| `hsla(0, 0%, 0%, 0.5)` | The color of the shadow in HSLA format.              |
+| `color`   | `HslaObject`| `hsla(0, 0%, 0%, 0.5)` | The color of the shadow in HSLA format.              |
 | `inset`   | `boolean`   | `false`          | Whether the shadow is an inset or an outer shadow.           |
 
 ### Return Value
@@ -370,13 +370,13 @@ The `createShadow` function returns a `ShadowObject` that contains methods for s
 **Creating a basic drop shadow:**
 
 ```javascript
-import { createShadow, createHSLA } from 'css-brewery';
+import { createShadow, createHsla } from 'css-brewery';
 
 const basicShadow = createShadow({
   x: 2,
   y: 2,
   blur: 4,
-  color: createHSLA({ h: 0, s: 0, l: 0, a: 0.5 })
+  color: createHsla({ h: 0, s: 0, l: 0, a: 0.5 })
 });
 
 console.log(basicShadow.toString());
@@ -389,7 +389,7 @@ console.log(basicShadow.toString());
 const initialShadow = createShadow({ x: 5, y: 5 });
 const blurredShadow = initialShadow.adjust({
   blur: 10,
-  color: createHSLA({ h: 0, s: 0, l: 0, a: 0.3 })
+  color: createHsla({ h: 0, s: 0, l: 0, a: 0.3 })
 });
 
 console.log(blurredShadow.toString());
@@ -404,7 +404,7 @@ const insetShadow = createShadow({
   y: 1,
   blur: 2,
   spread: 1,
-  color: createHSLA({ h: 210, s: 100, l: 50, a: 0.7 }),
+  color: createHsla({ h: 210, s: 100, l: 50, a: 0.7 }),
   inset: true
 });
 
@@ -416,7 +416,7 @@ console.log(insetShadow.toString());
 
 ```javascript
 const myShadow = createShadow();
-const newShadow = myShadow.set({ x: 0, y: 8, blur: 16, color: createHSLA({ h: 0, s: 0, l: 0, a: 0.6 }) });
+const newShadow = myShadow.set({ x: 0, y: 8, blur: 16, color: createHsla({ h: 0, s: 0, l: 0, a: 0.6 }) });
 
 console.log(newShadow.toString());
 // Output: '0px 8px 16px hsla(0, 0%, 0%, 0.6)'

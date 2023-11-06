@@ -1,4 +1,4 @@
-import { HSLAObject } from "./createHSLA"
+import { HslaObject } from "./createHsla_"
 
 /**
  * Interface representing a gradient object.
@@ -46,8 +46,8 @@ export type GradientType = "linear" | "radial" | "conic"
  * Represents a section of a gradient.
  */
 export interface GradientSection {
-  /** The color of the gradient section, represented by an `HSLAObject`. */
-  color: HSLAObject
+  /** The color of the gradient section, represented by an `HslaObject`. */
+  color: HslaObject
 
   /** The start position of the color stop as a percentage (optional). */
   start?: number

@@ -1,7 +1,7 @@
 /**
  * Interface representing an HSLA (Hue, Saturation, Lightness, Alpha) color object.
  */
-export interface HSLAObject {
+export interface HslaObject {
   /** The hue component of the color (0-360). */
   readonly h: number
 
@@ -15,28 +15,28 @@ export interface HSLAObject {
   readonly a: number
 
   /** The HSLA values as an object. */
-  readonly value: HSLAValues
+  readonly value: HslaValues
 
   /**
    * Updates the HSLA color object with new values.
    * @param newValues - An object containing new values to set on the color.
-   * @returns A new `HSLAObject` with updated properties.
+   * @returns A new `HslaObject` with updated properties.
    */
-  set: (newValues: Partial<HSLAValues>) => HSLAObject
+  set: (newValues: Partial<HslaValues>) => HslaObject
 
   /**
    * Adjusts the existing values of the HSLA color object.
    * @param adjustments - An object containing the adjustments to the color values.
-   * @returns A new `HSLAObject` with adjusted properties.
+   * @returns A new `HslaObject` with adjusted properties.
    */
-  adjust: (adjustments: Partial<HSLAValues>) => HSLAObject
+  adjust: (adjustments: Partial<HslaValues>) => HslaObject
 
   /**
    * Shifts the lightness of the HSLA color, making it lighter or darker based on the luminance.
    * @param adjustment - The amount by which to adjust the lightness.
-   * @returns A new `HSLAObject` with adjusted lightness.
+   * @returns A new `HslaObject` with adjusted lightness.
    */
-  shift: (adjustment: number) => HSLAObject
+  shift: (adjustment: number) => HslaObject
 
   /**
    * Converts the HSLA color to an RGB color.
@@ -54,7 +54,7 @@ export interface HSLAObject {
 /**
  * Type representing the values for an HSLA color.
  */
-export type HSLAValues = {
+export type HslaValues = {
   h: number
   s: number
   l: number
@@ -62,20 +62,20 @@ export type HSLAValues = {
 }
 
 /**
- * Creates a new `HSLAObject` with specified values or default ones.
+ * Creates a new `HslaObject` with specified values or default ones.
  * @param data - An object containing the initial HSLA values for the color.
  * @param data.h - The hue of the color, defaulting to 0.
  * @param data.s - The saturation of the color, defaulting to 0.
  * @param data.l - The lightness of the color, defaulting to 0.
  * @param data.a - The alpha (opacity) of the color, defaulting to 1.
- * @returns A new `HSLAObject` with the specified or default values.
+ * @returns A new `HslaObject` with the specified or default values.
  */
-export function createHSLA({
+export function createHsla({
   h = 0,
   s = 0,
   l = 0,
   a = 1,
-}: Partial<HSLAValues> = {}): HSLAObject {
+}: Partial<HslaValues> = {}): HslaObject {
   h = h % 360
   s = Math.min(100, Math.max(0, s))
   l = Math.min(100, Math.max(0, l))
@@ -97,23 +97,23 @@ export function createHSLA({
     get value() {
       return { h, s, l, a }
     },
-    set(newValues: Partial<HSLAValues>) {
-      return createHSLA({
+    set(newValues: Partial<HslaValues>) {
+      return createHsla({
         h: newValues.h ?? h,
         s: newValues.s ?? s,
         l: newValues.l ?? l,
         a: newValues.a ?? a,
       })
     },
-    adjust(adjustments: Partial<HSLAValues>) {
-      return createHSLA({
+    adjust(adjustments: Partial<HslaValues>) {
+      return createHsla({
         h: (h + (adjustments.h ?? 0)) % 360,
         s: Math.min(100, Math.max(0, s + (adjustments.s ?? 0))),
         l: Math.min(100, Math.max(0, l + (adjustments.l ?? 0))),
         a: Math.min(1, Math.max(0, a + (adjustments.a ?? 0))),
       })
     },
-    shift(adjustment: number): HSLAObject {
+    shift(adjustment: number): HslaObject {
       const [r, g, b] = this.toRgb()
       const luminance =
         (0.299 * r) / 255 + (0.587 * g) / 255 + (0.114 * b) / 255
@@ -153,16 +153,16 @@ export function createHSLA({
 }
 
 /**
- * Parses an HSLA color string and creates an `HSLAObject`.
+ * Parses an HSLA color string and creates an `HslaObject`.
  * @param hslaString - The HSLA color string to parse.
- * @returns A new `HSLAObject` if the string is valid, otherwise `null`.
+ * @returns A new `HslaObject` if the string is valid, otherwise `null`.
  */
-export function fromStringHSLA(hslaString: string): HSLAObject | null {
+export function fromStringHsla(hslaString: string): HslaObject | null {
   const regex = /hsla\((\d+),\s*(\d+)%,\s*(\d+)%,\s*(\d*(?:\.\d+)?)\)/
   const match = hslaString.match(regex)
   if (!match) return null
 
-  return createHSLA({
+  return createHsla({
     h: parseInt(match[1], 10),
     s: parseInt(match[2], 10),
     l: parseInt(match[3], 10),
