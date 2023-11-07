@@ -1,17 +1,31 @@
 {
   "name": "css-brewery",
-  "version": "0.4.2",
+  "description": "CSS utility for easy border, gradient, and shadow creation with HSLA colors.",
+  "version": "0.4.3",
   "author": "Jack Scott",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": {
-    "url": "https://github.com/jackrobertscott/css-brewery"
-  },
   "files": [
     "dist",
     "readme.md"
   ],
+  "keywords": [
+    "css",
+    "hsla",
+    "gradient",
+    "shadow",
+    "border",
+    "color",
+    "web",
+    "design",
+    "utility",
+    "style"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackrobertscott/css-brewery"
+  },
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist/*",
