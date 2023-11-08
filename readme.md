@@ -237,7 +237,7 @@ The `createHsla` function returns an `HslaObject` with the following methods:
 
 - `shift(amount: number)`: Shifts the hue value by a given degree, positive or negative, looping around the color wheel.
 
-- `toRgb()`: Converts the HSLA color to its RGB representation.
+- `toRgbVector()`: Converts the HSLA color to its RGB representation.
 
 - `toString()`: Converts the HSLA object into a CSS-compatible string.
 
@@ -278,7 +278,7 @@ console.log(shiftedColor.toString());
 
 ```javascript
 const myHslaColor = createHsla({ h: 300, s: 75, l: 50, a: 0.8 });
-const [r, g, b] = myHslaColor.toRgb();
+const [r, g, b] = myHslaColor.toRgbVector();
 
 console.log(`rgb(${r}, ${g}, ${b})`);
 // Possible Output: 'rgb(191, 64, 191)'

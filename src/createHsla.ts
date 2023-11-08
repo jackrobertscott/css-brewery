@@ -42,7 +42,7 @@ export interface HslaObject {
    * Converts the HSLA color to an RGB color.
    * @returns An array representing the RGB components of the color.
    */
-  toRgb: () => [number, number, number]
+  toRgbVector: () => [number, number, number]
 
   /**
    * Returns a string representation of the HSLA color.
@@ -114,7 +114,7 @@ export function createHsla({
       })
     },
     shift(adjustment: number): HslaObject {
-      const [r, g, b] = this.toRgb()
+      const [r, g, b] = this.toRgbVector()
       const luminance =
         (0.299 * r) / 255 + (0.587 * g) / 255 + (0.114 * b) / 255
       if (luminance < 0.5) {
@@ -126,7 +126,7 @@ export function createHsla({
     toString() {
       return `hsla(${h}, ${s}%, ${l}%, ${a})`
     },
-    toRgb(): [number, number, number] {
+    toRgbVector(): [number, number, number] {
       let r: number, g: number, b: number
       const l2 = l / 100
       const s2 = s / 100
